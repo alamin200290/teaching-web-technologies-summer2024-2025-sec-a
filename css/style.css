@@ -1,0 +1,25 @@
+
+div{ 
+    background-color: blue;
+    height: 100px; 
+    width: 100px;
+}
+#d1{ 
+    background-color: green;
+    height: 300px; 
+    width: 400px;
+    margin: 15px 10px 20px 30px;
+    padding: 10px;
+    position: relative;
+    left: 400px;
+    
+}
+#d2{ 
+    background-color: red;
+    height: 150px; 
+    width: 150px;
+    position: absolute;
+    left: 135px;
+    top: 85px;
+    border-radius: 50%;
+}
