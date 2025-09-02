@@ -1,7 +1,10 @@
 <?php
     session_start();
-    //print_r($_POST)
-    //print_r($_GET);
+    //include('../model/db.php');
+    //include_once('../model/db.php');
+    //require('../model/db.php');
+    require_once('../model/userModel.php');
+
     $username = trim($_REQUEST['username']);
     $password = trim($_REQUEST['password']);
 
@@ -9,14 +12,16 @@
         header('location: ../view/login.php?error=null');
         //echo "null username or password!";
     }else{
-        if($username == $password){
-            //$_SESSION['status'] = true;
-            $_SESSION['username'] = $username;
-            setcookie('status', true, time()+3000, '/');
-            header('location: ../view/home.php');
-            // echo "valid user!";
-        }else{
-            header('location: ../view/login.php?error=invalid');
-        }
+            $user = ['username'=> $username, 'password'=>$password];
+            $status = login($user);
+            if($status){
+                //$_SESSION['status'] = true;
+                $_SESSION['username'] = $username;
+                setcookie('status', true, time()+3000, '/');
+                header('location: ../view/home.php');
+                // echo "valid user!";
+            }else{
+                header('location: ../view/login.php?error=invalid');
+            }
     }
 ?>

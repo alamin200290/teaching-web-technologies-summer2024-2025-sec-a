@@ -1,17 +1,3 @@
-<?php
-    session_start();
-    //print_r($_REQUEST);
-    if(isset($_REQUEST['error'])){
-        if($_REQUEST['error'] == "invalid"){
-            echo "invalid username/password!";
-        }elseif($_REQUEST['error'] == "null"){
-            echo "null username or password!";
-        }
-    }
-    //print_r($_SESSION);
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='../asset/css/style.css' />
     <script src="../asset/js/script.js"> </script>
-    <title>Login</title>
+    <title>Signup</title>
 </head>
 <body>
-        <form action="../controller/loginCheck.php" method="post" enctype="multipart/form-data">
+        <form action="../controller/signupCheck.php" method="post" enctype="multipart/form-data">
             <fieldset>
-                <legend>Signin</legend>
+                <legend>Signup</legend>
                 username: <input type="text" name="username" value="" /> <br>
                 password: <input type="password" name="password" value="" /> <br>
+                email: <input type="email" name="email" value="" /> <br>
                      <input type="submit" name="submit" value="Submit" />
-                     <a href='signup.php'>Signup</a>
+                     <a href='login.php'>login</a>
             </fieldset>
         </form>
-
 </body>
 </html>
