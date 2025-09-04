@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ajax Example</title>
+</head>
+<body>
+        <h1 id="msg">Ajax Example</h1>
+      
+            username:   <input type="text" name="username" value="" id="username"/> <br >
+                        <p id="uError"></p>
+                        <input type="button" name="submit" value="Submit" onclick="ajax()" />
+                        <input type="button" name="test" value="test" onclick="alert('2nd task')"/>
+
+        <script>
+          function ajax(){
+            let username = document.getElementById('username').value;
+
+            let user = {
+              'username': username,
+              'password': '123',
+              'email': 'alamin@aiub.edu'
+            };
+
+            let data = JSON.stringify(user);
+
+            let xhttp = new XMLHttpRequest();
+            //xhttp.open('GET','test.php?username='+username, true);
+            xhttp.open('POST','test.php', true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("user="+data);
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    //alert(this.responseText); 
+                    let userData = JSON.parse(this.responseText); 
+                    document.getElementById('msg').innerHTML = userData.password;                  
+                }
+            }
+          }
+        </script>
+
+</body>
+</html>
